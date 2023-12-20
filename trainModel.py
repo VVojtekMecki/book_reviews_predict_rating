@@ -4,9 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
-import pickle
 import joblib
-from bs4 import BeautifulSoup
 import json
 
 # with open("reviewsDictList.pkl", 'rb') as file:

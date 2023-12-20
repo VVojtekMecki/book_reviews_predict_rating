@@ -2,29 +2,37 @@ from reviewsParser import ReviewsParser
 import pickle
 import json
 
-
-reviewsList = [
-    'https://www.goodreads.com/book/show/929782/reviews',
-    'https://www.goodreads.com/book/show/46170/reviews',
-    'https://www.goodreads.com/book/show/1232/reviews',
-    'https://www.goodreads.com/book/show/100915/reviews',
-    'https://www.goodreads.com/book/show/14318/reviews',
-    'https://www.goodreads.com/book/show/17274667/reviews',
-    'https://www.goodreads.com/book/show/2767052/reviews',
-    'https://www.goodreads.com/book/show/5907/reviews',
-    'https://www.goodreads.com/book/show/1003725/reviews',
-    'https://www.goodreads.com/book/show/41865/reviews',
-    'https://www.goodreads.com/book/show/55702231/reviews',
-    'https://www.goodreads.com/book/show/4934/reviews',
-    'https://www.goodreads.com/book/show/18796/reviews',
-    'https://www.goodreads.com/book/show/70401/reviews',
-    'https://www.goodreads.com/book/show/22557520/reviews',
-    'https://www.goodreads.com/book/show/581125/reviews'
+lubimyCzytacLinks = [
+	'https://lubimyczytac.pl/ksiazki/opinie?page=1&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=2&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=4&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=5&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=6&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=7&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=8&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=9&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=10&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=11&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=12&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=13&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=14&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=16&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=17&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=18&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=21&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=22&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=23&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=24&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=25&listId=listId_13616_1&sortBy=youngest&rating%5B0%5D=0&rating%5B1%5D=10&showFirstLetter=0&paginatorType=Standard&isHighlightReview=1&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=4&listId=listId_13616_1&sortBy=popular&rating%5B0%5D=1&rating%5B1%5D=6&showFirstLetter=0&paginatorType=Standard&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=5&listId=listId_13616_1&sortBy=popular&rating%5B0%5D=1&rating%5B1%5D=6&showFirstLetter=0&paginatorType=Standard&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=13&listId=listId_13616_1&sortBy=popular&rating%5B0%5D=1&rating%5B1%5D=6&showFirstLetter=0&paginatorType=Standard&paginatorType=Standard',
+    'https://lubimyczytac.pl/ksiazki/opinie?page=15&listId=listId_13616_1&sortBy=popular&rating%5B0%5D=1&rating%5B1%5D=6&showFirstLetter=0&paginatorType=Standard&paginatorType=Standard',
 ]
 
 reviewsDataCollected = []
 
-reviewsParser = ReviewsParser(reviewsList)
+reviewsParser = ReviewsParser(lubimyCzytacLinks)
 
 for url in reviewsParser.links:
     reviews = reviewsParser.getReviewsFromUrl(url)

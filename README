@@ -1,8 +1,9 @@
 Temat: Dobra recenzja, czy zła?
+Generuje ocene 1-5 na podstawie recenzji 
 Author: Wojciech Medenecki
 
 Dependencies:
-	en-core-web-md @ https://github.com/explosion/spacy-models/releases/download/en_core_web_md-3.7.1/en_core_web_md-3.7.1-py3-none-any.whl#sha256=6a0f857a2b4d219c6fa17d455f82430b365bf53171a2d919b9376e5dc9be032e
+	pl-core-news-md @ https://github.com/explosion/spacy-models/releases/download/pl_core_news_md-3.7.0/pl_core_news_md-3.7.0-py3-none-any.whl#sha256=58a9f32e18525ed647bafbfcd1764191c633d717f0c88535b9481d4e5641af52
 	beautifulsoup4==4.12.2
 	pandas==2.1.4
 	requests==2.31.0

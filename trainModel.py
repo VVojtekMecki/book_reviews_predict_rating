@@ -6,14 +6,11 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import joblib
 import json
-
-# with open("reviewsDictList.pkl", 'rb') as file:
-#     reviewsDicts = pickle.load(file)
     
 with open('reviewsDictList.json', 'r') as file:
     data = json.load(file)
 
-nlp = spacy.load("en_core_web_md")
+nlp = spacy.load("pl_core_news_md")
 
 reviews = []
 ratings = []
@@ -28,7 +25,7 @@ for review in data:
     processedText = ' '.join([token.text for token in tokens if not token.is_stop])
     reviews.append(processedText)
     
-    ratings.append(int(review['rating']))
+    ratings.append(float(review['rating']))
 
 y = [[rating] for rating in ratings]
 # Convert a collection of raw documents to a matrix of TF-IDF features.
